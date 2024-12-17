@@ -27,4 +27,14 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(e.toString());
     }
   }
+
+  @override
+  Future<Either<String, User>> googleSignIn() async {
+    try {
+      final userModel = await remoteDataSource.signInWithGoogle();
+      return Right(User(uid: userModel.uid, email: userModel.email));
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
 }

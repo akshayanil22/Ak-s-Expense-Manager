@@ -1,3 +1,4 @@
+import 'package:aks_expense_manager/features/home/presentation/pages/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,8 +26,17 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          textTheme: const TextTheme(
+            headlineLarge: TextStyle(fontWeight: FontWeight.w600)
+          )
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => LoginPage(),
+          'home': (context) => const HomeScreen(),
+        },
         title: 'Auth App',
-        home: LoginPage(),
       ),
     );
   }
